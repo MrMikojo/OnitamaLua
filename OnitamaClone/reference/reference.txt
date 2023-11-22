@@ -1,0 +1,222 @@
+function checkStatusFrog()
+
+    for i, c in ipairs (cards) do 
+
+        if frog.cardName == "frog" and frog.cardState == "B1" then
+
+            for _, B in ipairs(bluePawns) do
+                        
+                B.frogMove = 1
+
+                    if B.isPickedUp == 2 then
+                            
+
+                end
+            end
+
+
+        elseif frog.cardName == "frog" and frog.cardState ==  "B2" then
+
+                for _, B in ipairs(bluePawns) do
+
+                            
+                    B.frogMove = 1
+    
+                        if B.isPickedUp == 2 then
+
+
+                        end
+                end
+
+        elseif frog.cardName == "frog" and frog.cardState == "N1" then
+                for _, B in ipairs(bluePawns) do 
+                    B.frogMove = 0
+
+                end
+
+                for i, R in ipairs(redPawns) do 
+                    R.frogMove = 0
+         
+                end
+
+        elseif frog.cardName == "frog" and frog.cardState == "N2" then
+                for i, B in ipairs(bluePawns) do 
+                    B.frogMove = 0
+     
+                end
+
+                for i, R in ipairs(redPawns) do 
+                    R.frogMove = 0
+               
+                end
+
+
+        elseif frog.cardName == "frog" and frog.cardState == "R1" then
+            for i, R in ipairs(redPawns) do 
+                R.frogMove = 1
+          
+            end
+        
+        elseif frog.cardName == "frog" and frog.cardState == "R2" then
+            for i, R in ipairs(redPawns) do 
+                R.frogMove = 1
+           
+            end
+        end
+    end
+end
+
+
+
+
+
+-- keyboard part
+    if love.keyboard.isDown('f') and love.keyboard.isDown('1') then
+        if gameState == 1 then
+            for i, B in ipairs(bluePawns) do
+                if B.isPickedUp == 2 and B.frogMove == 1 then
+                    local newX, newY = frogMove1(B.x, B.y, B.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(B, newX, newY)
+    
+                    if noCollision then
+                        B.x, B.y, B.isPickedUp = newX, newY, 1
+    
+                        for j, T in ipairs(cards) do
+                            if T.cardState == "N2" then
+                                T.cardState = "B1"
+                            elseif T.cardState == "B1" and T.cardName == "frog" then
+                                T.cardState = "N1"
+                            elseif T.cardState == "B2" and T.cardName == "frog" then
+                                T.cardState = "N1"
+                            end
+                        end
+    
+                        destroyPawns()
+                        gameState = 2
+                        sounds["tick"]:play()
+                    end
+                end
+            end
+        elseif gameState == 2 then
+            for i, R in ipairs(redPawns) do
+                if R.isPickedUp == 2 and R.frogMove == 1 then
+                    local newX, newY = frogMove4(R.x, R.y, R.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(R, newX, newY)
+    
+                    if noCollision then
+                        R.x, R.y, R.isPickedUp = newX, newY, 1
+    
+                        for I, T in ipairs(cards) do
+                            if T.cardState == "R1" and T.cardName == "frog" then
+                                T.cardState = "N2"
+                            elseif T.cardState == "R2" and T.cardName == "frog" then
+                                T.cardState = "N2"
+                            elseif T.cardState == "N1" then
+                                T.cardState = "R1"
+                            end
+                        end
+    
+                        destroyPawns()
+                        gameState = 1
+                        sounds["tick"]:play()
+                    end
+                end
+            end
+        end
+    end
+
+
+
+
+    if love.keyboard.isDown('f') and love.keyboard.isDown('2') then
+        if gameState == 1 then
+            for i, B in ipairs(bluePawns) do
+                if B.isPickedUp == 2 and B.frogMove == 1 then
+                    local newX, newY = frogMove2(B.x, B.y, B.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(B, newX, newY)
+    
+                    if noCollision then
+                        B.x, B.y, B.isPickedUp = newX, newY, 1
+    
+                        for j, T in ipairs(cards) do
+                            if T.cardState == "N2" then
+                                T.cardState = "B1"
+                            elseif T.cardState == "B1" and T.cardName == "frog" then
+                                T.cardState = "N1"
+                            elseif T.cardState == "B2" and T.cardName == "frog" then
+                                T.cardState = "N1"
+                            end
+                        end
+    
+                        destroyPawns()
+                        gameState = 2
+                        sounds["tick"]:play()
+                    end
+                end
+            end
+        elseif gameState == 2 then
+            for i, R in ipairs(redPawns) do
+                if R.isPickedUp == 2 and R.frogMove == 1 then
+                    local newX, newY = frogMove5(R.x, R.y, R.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(R, newX, newY)
+    
+                    if noCollision then
+                        R.x, R.y, R.isPickedUp = newX, newY, 1
+    
+                        for I, T in ipairs(cards) do
+                            if T.cardState == "R1" and T.cardName == "frog" then
+                                T.cardState = "N2"
+                            elseif T.cardState == "R2" and T.cardName == "frog" then
+                                T.cardState = "N2"
+                            elseif T.cardState == "N1" then
+                                T.cardState = "R1"
+                            end
+                        end
+    
+                        destroyPawns()
+                        gameState = 1
+                        sounds["tick"]:play()
+                    end
+                end
+            end
+        end
+    end
+
+
+
+
+    
+
+                        --copy for blue part
+
+                        --check move and make sure team is right
+                    local newX, newY = frogMove1(B.x, B.y, B.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(B, newX, newY) 
+                    local notOutOfBounds = not isOutOfBounds(B, newX, newY) 
+    
+                    if noCollision and notOutOfBounds then
+
+                        B.x, B.y, B.isPickedUp = newX, newY, 1
+
+
+
+    
+                        -- copy for red part, double check move
+                            local newX, newY = frogMove4(R.x, R.y, R.isPickedUp)
+    
+                    -- Check for collisions with pawns of the same color
+                    local noCollision = not hasCollisionWithSameColor(R, newX, newY)
+                    local notOutOfBounds = not isOutOfBounds(R, newX, newY) 
+    
+                    if noCollision and notOutOfBounds then
+                        R.x, R.y, R.isPickedUp = newX, newY, 1

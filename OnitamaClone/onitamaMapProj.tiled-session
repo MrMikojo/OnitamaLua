@@ -1,0 +1,36 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "gameBoard.tmx": {
+            "scale": 2.2206249999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 80.15761328454829,
+                "y": 80.38277511961724
+            }
+        },
+        "gameBoard.tmx#tile": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "/home/miko/Desktop/projects/OnitamaClone",
+    "last.imagePath": "/home/miko/Desktop/projects/OnitamaClone/sprites",
+    "map.height": 7,
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": "2",
+    "map.width": 9,
+    "openFiles": [
+    ],
+    "project": "onitamaMapProj.tiled-project",
+    "recentFiles": [
+        "gameBoard.tmx"
+    ],
+    "tileset.embedInMap": true
+}
